@@ -7,23 +7,19 @@ export default class Entity {
     throw new Error("Метод должен быть реализован в дочернем классе");
   }
 
-  async get(id) {
-    // eslint-disable-next-line no-unused-vars
+  async get(id) { // eslint-disable-line no-unused-vars
     throw new Error("Метод должен быть реализован в дочернем классе");
   }
 
-  async create(data) {
-    // eslint-disable-next-line no-unused-vars
+  async create(data) { // eslint-disable-line no-unused-vars
     throw new Error("Метод должен быть реализован в дочернем классе");
   }
 
-  async update(id, data) {
-    // eslint-disable-next-line no-unused-vars
+  async update(id, data) { // eslint-disable-line no-unused-vars
     throw new Error("Метод должен быть реализован в дочернем классе");
   }
 
-  async delete(id) {
-    // eslint-disable-next-line no-unused-vars
+  async delete(id) { // eslint-disable-line no-unused-vars
     throw new Error("Метод должен быть реализован в дочернем классе");
   }
 }

@@ -8,14 +8,11 @@ const createRequest = async ({ url, method = 'GET', data }) => {
     options.body = JSON.stringify(data);
   }
 
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.message);
-    return result;
-  } catch (error) {
-    throw error;
-  }
+  const response = await fetch(url, options);
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.message);
+  
+  return result;
 };
 
 export default createRequest;
