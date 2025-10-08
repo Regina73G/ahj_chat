@@ -1,6 +1,6 @@
 export default class Entity {
   constructor() {
-    this.baseUrl = 'http://localhost:10000';
+    this.baseUrl = 'http://localhost:3000';
   }
 
   async list() {
