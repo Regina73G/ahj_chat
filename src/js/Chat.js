@@ -24,6 +24,7 @@ export default class Chat {
 
     const promptInput = document.createElement('input');
     promptInput.classList.add('prompt_input');
+    promptInput.name = 'prompt-input';
 
     const promptButton = document.createElement('button');
     promptButton.classList.add('prompt_button');
@@ -33,7 +34,7 @@ export default class Chat {
     const errorMsg = document.createElement('div');
     errorMsg.classList.add('prompt_error-msg');
 
-    prompt.append(promptTitle, promptInput, promptButton, errorMsg);
+    prompt.append(promptTitle, promptInput, errorMsg, promptButton);
     document.body.append(prompt);
   
     promptButton.addEventListener('click', () => {
@@ -110,8 +111,12 @@ export default class Chat {
     const messageList = document.createElement('ul');
     messageList.classList.add('message-box_list');
 
+    const sendBox = document.createElement('div');
+    sendBox.classList.add('message-box_send-box');
+
     const messageInput = document.createElement('input');
     messageInput.classList.add('message-box_input');
+    messageInput.name = 'message-input';
     messageInput.placeholder = 'Type your message here';
 
     const sendMessageButton = document.createElement('button');
@@ -123,8 +128,9 @@ export default class Chat {
     exitButton.textContent = 'Exit Chat';
 
     userBox.append(userList);
-    messageBox.append(messageList, messageInput, sendMessageButton);
-    chat.append(userBox, messageBox, exitButton);
+    sendBox.append(messageInput, sendMessageButton);
+    messageBox.append(messageList, sendBox, exitButton);
+    chat.append(userBox, messageBox);
     this.container.append(chat);
 
     sendMessageButton.addEventListener("click", () => this.sendMessage());
@@ -140,7 +146,8 @@ export default class Chat {
     this.usersList.forEach(user => {
       const li = document.createElement("li");
       li.classList.add('user-box_name');
-      li.textContent = user.name === this.user.name ? `${user.name} (You)` : user.name;
+      li.textContent = user.name === this.user.name ? 'You' : user.name;
+      li.style.color = user.name === this.user.name ? 'red' : 'black';
       ul.append(li);
     });
   }
@@ -159,6 +166,7 @@ export default class Chat {
     const meta = document.createElement("div");
     meta.classList.add("message-box_msg_meta");
     meta.textContent = `${isOwn ? "You" : msg.user.name}, ${timeStr} ${dateStr}`;
+    if (isOwn) meta.classList.add('meta-own');
 
     const text = document.createElement("div");
     text.classList.add("message-box_msg_text");
