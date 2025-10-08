@@ -65,7 +65,7 @@ export default class Chat {
   }
 
   initWebSocket() {
-    this.websocket = new WebSocket('ws://localhost:3000');
+    this.websocket = new WebSocket('ws://localhost:10000');
 
     this.websocket.onmessage = (e) => {
       const data = JSON.parse(e.data);
