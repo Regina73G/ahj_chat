@@ -1,6 +1,8 @@
 export default class Entity {
   constructor() {
-    this.baseUrl = 'http://localhost:3000';
+    this.baseUrl = window.location.hostname === 'localhost'
+      ? 'http://localhost:3000'
+      : 'https://ahj-chat-backend-zi77.onrender.com';
   }
 
   async list() {

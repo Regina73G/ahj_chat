@@ -65,7 +65,9 @@ export default class Chat {
   }
 
   initWebSocket() {
-    this.websocket = new WebSocket('ws://localhost:3000');
+    this.websocket = new WebSocket(
+      (window.location.hostname === 'localhost' ? 'ws' : 'wss') + '://ahj-chat-backend-zi77.onrender.com'
+    );
 
     this.websocket.onmessage = (e) => {
       const data = JSON.parse(e.data);
